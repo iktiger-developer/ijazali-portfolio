@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ijaz ali | portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
+        
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff00e6;
+            --neon-purple: #b400ff;
+            --dark-bg: #0a0a12;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            background-image: url('https://i.postimg.cc/vmJnVHfD/ijaz-web-bg.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+        }
+        
+        .neon-border {
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue), inset 0 0 10px var(--neon-blue);
+        }
+        
+        .neon-card {
+            background: rgba(10, 10, 18, 0.7);
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .neon-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px var(--neon-pink);
+            border-color: var(--neon-pink);
+        }
+        
+        .skill-icon {
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 5px var(--neon-blue));
+        }
+        
+        .skill-icon:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px var(--neon-pink));
+        }
+        
+        .glow-btn {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            box-shadow: 0 0 15px var(--neon-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .glow-btn:hover {
+            box-shadow: 0 0 25px var(--neon-pink);
+            transform: translateY(-3px);
+        }
+        
+        .section {
+            min-height: 100vh;
+            padding: 5rem 0;
+            position: relative;
+            background-color: rgba(10, 10, 18, 0.7);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--neon-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 20px;
+            width: 1px;
+            height: calc(100% - 20px);
+            background: var(--neon-blue);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        input, textarea {
+            background: rgba(10, 10, 18, 0.7);
+            border: 1px solid var(--neon-blue);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 15px var(--neon-pink);
+        }
+        
+        ::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.active {
+            max-height: 500px;
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 0;
+            }
+        }
+        
+        /* Projects Section */
+        .projects-section {
+            background-color: rgba(10, 10, 18, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .projects-heading {
+            font-size: 2.25rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .no-projects {
+            font-size: 1.2rem;
+            color: #9ca3af;
+            padding: 2rem;
+            background-color: rgba(31, 41, 55, 0.7);
+            border-radius: 0.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+   <nav class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-70 backdrop-filter backdrop-blur-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold neon-text"></a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-neon-blue">HOME</a>
+                    <a href="#about" class="nav-link text-white hover:text-neon-blue">ABOUT</a>
+                    <a href="#skills" class="nav-link text-white hover:text-neon-blue">SKILLS</a>
+                    <a href="#certifications" class="nav-link text-white hover:text-neon-blue">CERTIFICATIONS</a>
+                    <a href="#projects" class="nav-link text-white hover:text-neon-blue">PROJECTS</a>
+                    <a href="#contact" class="nav-link text-white hover:text-neon-blue">CONTACT</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden">
+                <div class="flex flex-col space-y-4 pt-4 pb-6">
+                    <a href="#home" class="nav-link text-white hover:text-neon-blue">HOME</a>
+                    <a href="#about" class="nav-link text-white hover:text-neon-blue">ABOUT</a>
+                    <a href="#skills" class="nav-link text-white hover:text-neon-blue">SKILLS</a>
+                    <a href="#certifications" class="nav-link text-white hover:text-neon-blue">CERTIFICATIONS</a>
+                    <a href="#projects" class="nav-link text-white hover:text-neon-blue">PROJECTS</a>
+                    <a href="#contact" class="nav-link text-white hover:text-neon-blue">CONTACT</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="section flex items-center justify-center">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-12">
+                <h1 class="text-5xl md:text-7xl font-bold neon-text mb-4">
+                    IJAZ ALI
+                </h1>
+            </div>
+            <h2 class="text-2xl md:text-3xl mb-8 neon-text">Web Developer | Graphics Designer</h2>
+            <div class="flex justify-center space-x-4">
+                <a href="#about" class="glow-btn px-8 py-3 rounded-full text-black font-bold">EXPLORE</a>
+                <a href="#contact" class="neon-border px-8 py-3 rounded-full text-white font-bold hover:bg-neon-blue hover:text-black transition-all">CONTACT</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold neon-text mb-12 text-center">ABOUT ME</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full neon-border overflow-hidden">
+                            <img src="https://i.postimg.cc/ydGb9Rnc/ijaz-profile.jpg" alt="ijaz ali" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 bg-black p-4 rounded-full neon-border">
+                            <span class="text-neon-blue font-bold">100%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <p class="text-lg mb-6 leading-relaxed">
+                        I’m a web developer and designer with a growing passion for creating digital products that are
+                        both beautiful and functional. My journey started with a love for art and design, which
+                        naturally led me to explore coding and discover the ability to turn ideas into interactive
+                        experiences.
+                    </p>
+                    <p class="text-lg mb-6 leading-relaxed">
+                       I focus on learning and building responsive websites with clean, efficient code and intuitive
+                        user interfaces. My approach combines technical skills with creativity, aiming to improve with
+                        every project while delivering designs that serve a clear purpose.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                       
+                        <div class="neon-card p-4 rounded-lg">
+                            <h3 class="text-neon-blue font-bold mb-2">Web development</h3>
+                            <p> Html , css, JavaScript</p>
+                        </div>
+                        <div class="neon-card p-4 rounded-lg">
+                            <h3 class="text-neon-blue font-bold mb-2">Graphics Design</h3>
+                            <p>Adobe Photoshop, Illustrator, Brand Identity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold neon-text mb-12 text-center">TECHNICAL SKILLS</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="skill-icon text-6xl mb-4 text-neon-blue">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">MS Word</h3>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="bg-neon-blue h-2.5 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="skill-icon text-6xl mb-4 text-neon-blue">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">MS Excel</h3>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="bg-neon-blue h-2.5 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+               
+               
+                <div class="text-center">
+                    <div class="skill-icon text-6xl mb-4 text-neon-blue">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Photoshop</h3>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="bg-neon-blue h-2.5 rounded-full" style="width: 88%"></div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="skill-icon text-6xl mb-4 text-neon-blue">
+                        <i class="fas fa-vector-square"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Illustrator</h3>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="bg-neon-blue h-2.5 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="skill-icon text-6xl mb-4 text-neon-blue">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Typing</h3>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="bg-neon-blue h-2.5 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold neon-text mb-12 text-center">CERTIFICATIONS</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-bold text-neon-blue mb-2">Matriculation Certificate</h3>
+                    <p class="text-gray-300 mb-2">Board of Secondary Education</p>
+                    <p class="text-gray-400">Completed with Group Science</p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-bold text-neon-blue mb-2">Fsc Certificate</h3>
+                    <p class="text-gray-300 mb-2">Board of Higher Secondary Education</p>
+                    <p class="text-gray-400">Completed with Group Pre-Medical</p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-bold text-neon-blue mb-2">Diploma in Information Technology</h3>
+                    <p class="text-gray-300 mb-2">Technical Education Board</p>
+                    <p class="text-gray-400">Specialized in Office Automation and System Administration</p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-bold text-neon-blue mb-2">Graphics Design Certification</h3>
+                    <p class="text-gray-300 mb-2">Creative Arts Institute</p>
+                    <p class="text-gray-400">Professional training in Adobe Creative Suite for digital media production</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="skills-container">
+            <h2 class="text-4xl font-bold neon-text mb-12 text-center">My Projects</h2>
+            <div class="no-projects">
+                <p>Currently working on new projects. Check back soon for updates!</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold neon-text mb-12 text-center">GET IN TOUCH</h2>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-bold text-neon-blue mb-4">Contact Information</h3>
+                    <p class="mb-6">Feel free to reach out for collaborations, projects, or just to say hello!</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="text-neon-blue text-xl mr-4 mt-1">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <a href="mailto:ia3377494@gmail.com" class="text-gray-300 hover:text-neon-blue">ia3377494@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-neon-blue text-xl mr-4 mt-1">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">instagram</h4>
+                                <a href="https://www.instagram.com/ijazali2064/" class="text-gray-300 hover:text-neon-blue" target="_blank">@ijazali2064</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-neon-blue text-xl mr-4 mt-1">
+                                <i class="fas fa-facebook"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Facebook</h4>
+                                <a href="https://www.facebook.com/share/16j7gnbBwG/" class="text-gray-300 hover:text-neon-blue" target="_blank">ijazali yousafzai</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <form action="https://formsubmit.co/ia3377494@gmail.com" method="POST" class="space-y-6">
+                        <!-- Honeypot (anti-spam) -->
+                        <input type="text" name="_honey" style="display: none;">
+                        <!-- Disable Captcha -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <!-- Success Redirect (Optional) -->
+                        <input type="hidden" name="_next" value="https://voluble-cuchufli-bbf97e.netlify.app/thanks.html">
+                        
+                        <div>
+                            <label for="name" class="block mb-2 text-neon-blue">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg focus:outline-none" placeholder="Your name">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 text-neon-blue">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg focus:outline-none" placeholder="Your email">
+                        </div>
+                        <div>
+                            <label for="subject" class="block mb-2 text-neon-blue">Subject</label>
+                            <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg focus:outline-none" placeholder="Subject">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2 text-neon-blue">Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg focus:outline-none" placeholder="Your message"></textarea>
+                        </div>
+                        <button type="submit" class="glow-btn w-full py-3 rounded-lg font-bold">SEND</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-70 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400">&copy; 2025 ijaz ali. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('active');
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (menu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.remove('active');
+                document.querySelector('#mobile-menu-button i').classList.remove('fa-times');
+                document.querySelector('#mobile-menu-button i').classList.add('fa-bars');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
